@@ -3,32 +3,8 @@ $(function () {
     //在页面渲染时就发送ajax 
     var currentPage = 1;
     var pageSize = 5;
-    //封装ajax 
-    function render() {
-        $.ajax({
-            type: 'get',
-            url: '/user/queryUser',
-            data: {
-                page: currentPage,
-                pageSize: pageSize
-            },
-            success: function (info) {
-                console.log(info);
-                // 准备末班引擎
-                $('tbody').html(template('tpl', info));
-                
-                $('#paginator').bootstrapPaginator({
-                    bootstrapMajorVersion: 3, //bootstrap版本
-                    currentPage: currentPage, //当前页面 
-                    totalPages: Math.ceil(info.total / pageSize),
-                    onPageClicked: function (event, originalEvent, type, page) {
-                        currentPage = page;
-                        render();
-                    }
-                });
-            }
-        });
-    }
+    
+  
     render();
 
 
@@ -62,6 +38,30 @@ $(function () {
         })
     })
 
-
-
+//封装ajax  
+    function render() {
+        $.ajax({
+            type: 'get',
+            url: '/user/queryUser',
+            data: {
+                page: currentPage,
+                pageSize: pageSize
+            },
+            success: function (info) {
+                console.log(info);
+                // 准备末班引擎
+                $('tbody').html(template('tpl', info));
+                
+                $('#paginator').bootstrapPaginator({
+                    bootstrapMajorVersion: 3, //bootstrap版本
+                    currentPage: currentPage, //当前页面 
+                    totalPages: Math.ceil(info.total / pageSize),
+                    onPageClicked: function (event, originalEvent, type, page) {
+                        currentPage = page;
+                        render();
+                    }
+                });
+            }
+        });
+    }
 })

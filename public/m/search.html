@@ -5,44 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>分类</title>
+    <title>搜索页面</title>
     <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="./lib/mui/css/mui.css">
     <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./css/search.css">
 </head>
 
 <body>
     <div class="lt_container">
         <div class="lt_header">
-            <a class="icon_left" href="index.html">
-                <span class="fa fa-home"></span>
+            <a class="icon_left" href="javascript: history.go(-1)">
+                <span class="mui-icon mui-icon-arrowleft"></span>
             </a>
-            <h4>乐淘云购</h4>
-            <a class="icon_right" href="search.html">
-                <span class="fa fa-search"></span>
-            </a>
+            <h4>搜索中心</h4>
+
         </div>
         <div class="lt_main">
-            <div class="category_left">
-                <div class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                        <!--这里放置真实显示的DOM内容-->
-                        <ul>
-
-                        </ul>
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!--这里放置真实显示的DOM内容-->
+                    <div class="lt_search">
+                        <input type="text" class="search_text" placeholder="请输入搜索关键字">
+                        <button class="mui-btn mui-btn-blue search_btn">搜索</button>
                     </div>
-                </div>
-            </div>
-            <div class="category_right">
-                <div class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                        <!--这里放置真实显示的DOM内容-->
-                        <ul>
-                          
-                            
-                        </ul>
+                    <div class="lt_history">
+
                     </div>
                 </div>
             </div>
@@ -50,14 +39,14 @@
 
         <div class="lt_footer">
             <ul class="mui-clearfix">
-                <li>
-                    <a href="#">
+                <li class="active">
+                    <a href="index.html">
                         <span class="fa fa-home"></span>
                         <p>首页</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="category.html">
                         <span class="fa fa-bars"></span>
                         <p>分类</p>
                     </a>
@@ -82,26 +71,29 @@
 <script src="./lib/zepto/zepto.min.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/index.js"></script>
-<script src="./js/category.js"></script>
+<script src="./js/search.js"></script>
 <script type="text/html" id="tpl">
-    
-    {{ each rows v i}}
-    <li data-id={{v.id}} class="{{ i==0 ? 'active' : ''}}">
-        <a href="#">{{v.categoryName}}</a>
-    </li>
-    {{ /each }}
-</script>
-<script type="text/html" id="tpl2">
-    {{if rows.length == 0}}
-        <img src="./images/none.jpg" alt="">
+    {{ if list.length == 0 }}
+        <p>没有更多历史记录</p>
+    {{ /if}}
+    {{ if list.length > 0}}
+    <div class="title mui-clearfix">
+        <span class="mui-pull-left">搜索历史</span>
+        <span class="mui-pull-right fa fa-trash btn_empty">清空记录</span>
+    </div>
+    <div class="content">
+        <ul>
+            {{each list v i}}
+            <!-- list 就是这个数组  v 就是数组的每一项 i 就是下标 -->
+            <li class="mui-clearfix">
+                <!-- 这是个数组 所以直接用  -->
+                <a href="javascript:;">{{v}}</a>
+                <span class="mui-pull-right mui-icon mui-icon-closeempty btn-delete" data-index={{i}} ></span>
+            </li>
+            {{ /each }}
+        </ul>
+    </div>
     {{ /if }}
-    {{each rows v i }}
-    <li>
-        <a href="#">
-            <img src="{{v.brandLogo}}" alt="">
-            <p>{{v.brandName}}</p>
-        </a>
-    </li>
-    {{ /each }}
 </script>
+
 </html>

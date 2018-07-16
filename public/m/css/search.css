@@ -1,0 +1,41 @@
+.lt_search {
+  padding: 10px;
+  position: relative;
+}
+.lt_search input {
+  height: 34px;
+  line-height: 34px;
+  border-radius: 5px;
+  margin: 0;
+  font-size: 12px;
+}
+.lt_search .search_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.lt_history {
+  padding: 10px;
+}
+.lt_history .title span {
+  font-size: 12px;
+  color: #666;
+  height: 30px;
+  line-height: 30px;
+}
+.content ul {
+  border: 1px dashed red;
+  border-bottom: none;
+}
+.content li {
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dashed red;
+}
+.content li a {
+  padding-left: 10px;
+}
+.content li .btn-delete {
+  height: 30px;
+  line-height: 30px;
+}

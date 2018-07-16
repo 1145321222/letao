@@ -1,0 +1,39 @@
+.lt_sort {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    background-color: #eeeeee;
+   
+        
+    
+    a {
+        width: 25%;
+        float: left;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        &.active {
+            
+             color: darkorange;
+            
+          }
+    }
+}
+.lt_product {
+    padding: 10px;
+    .product_item {
+        float: left;
+        padding: 10px;
+        height: 265px;
+        width: 47%;
+        border: 1px solid #ccc;
+        text-align: center;
+        margin-bottom: 10px;
+        .price {
+            color: red;
+        }
+        &:nth-child(2n) {
+            margin-left: 4%;
+        }
+    }
+}

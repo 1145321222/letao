@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./favicon.ico">
+    <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="./lib/mui/css/mui.css">
     <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
     <link rel="stylesheet" href="./css/common.css">
@@ -30,36 +30,21 @@
                     <div class="mui-scroll">
                         <!--这里放置真实显示的DOM内容-->
                         <ul>
-                            <li class="active"><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
-                            <li><a href="#">运动鞋</a></li>
+
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="category_right">
-                    <div class="mui-scroll-wrapper">
-                            <div class="mui-scroll">
-                                <!--这里放置真实显示的DOM内容-->
-                                <ul>
-                                    <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
-                                    <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
-                                    <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
-                                    <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
-                                    <li><a href="#"><img src="./images/brand1.png" alt=""><p>耐克</p></a></li>
-                                </ul>
-                            </div>
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <!--这里放置真实显示的DOM内容-->
+                        <ul>
+                          
+                            
+                        </ul>
                     </div>
+                </div>
             </div>
         </div>
 
@@ -94,6 +79,29 @@
     </div>
 </body>
 <script src="./lib/mui/js/mui.js"></script>
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/index.js"></script>
-
+<script src="./js/category.js"></script>
+<script type="text/html" id="tpl">
+    
+    {{ each rows v i}}
+    <li data-id={{v.id}} class="{{ i==0 ? 'active' : ''}}">
+        <a href="#">{{v.categoryName}}</a>
+    </li>
+    {{ /each }}
+</script>
+<script type="text/html" id="tpl2">
+    {{if rows.length == 0}}
+        <img src="./images/none.jpg" alt="">
+    {{ /if }}
+    {{each rows v i }}
+    <li>
+        <a href="#">
+            <img src="{{v.brandLogo}}" alt="">
+            <p>{{v.brandName}}</p>
+        </a>
+    </li>
+    {{ /each }}
+</script>
 </html>
